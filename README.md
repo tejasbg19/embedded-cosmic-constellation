@@ -10,8 +10,7 @@
 
 ## 🚀 Overview
 
-This project demonstrates the **creation and relocation of a custom data section**  
-named `.cosmic_constellation`. The section is:
+This project demonstrates the **creation and relocation of a custom data section** named `.cosmic_constellation`. The section is:
 
 - **Stored in Flash** initially (Load Memory Address, LMA = `0x00003000`)  
 - **Relocated to SRAM** during system startup (Virtual Memory Address, VMA = after `.bss`)  
@@ -33,8 +32,7 @@ At runtime, the relocated data is accessed and verified via a global variable in
 
 ## 🧠 Concept Summary
 
-Embedded systems with Harvard architectures store **code & constants in Flash**  
-and **mutable data in RAM**.  
+Embedded systems with Harvard architectures store **code & constants in Flash** and **mutable data in RAM**.  
 
 This project implements:
 - Dual-placement of a section using the `AT>` directive in the linker script.
@@ -83,6 +81,7 @@ for(uint32_t i = 0; i < size; i++)
     *pDst++ = *pSrc++;
 }
 ```
+----
 
 ## 🧾 Dual-Placement in Linker Script
 
@@ -113,6 +112,7 @@ SECTIONS
 }
 
 ```
+----
 
 ## 🧪 Expected Runtime Output (in Debugger)
 
@@ -143,382 +143,9 @@ confirming successful relocation of `.cosmic_constellation` from Flash (LMA) to 
                 0x20000028                        __custom_end__ = .
 ```
 
-## 🧰 Visual Proof (Screenshots)
 
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
+----
 
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-
-This implementation successfully:
-
-- Defines and places a custom section in Flash.  
-- Relocates it to RAM during startup using linker symbols.  
-- Verifies relocation via debugger and variable inspection.  
-
-**Result:** `.cosmic_constellation` section correctly relocates from Flash → RAM  
-and is accessible during program execution.
-
----
-
-🧠 *Developed & Verified by:*  
-**Tejas B G**  
-Electronics & Communication Engineering – DSATM  
-Cohort 3 | Infineon Embedded Systems Design Course
-## 🧰 Visual Proof (Screenshots)
-
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-## 🧰 Visual Proof (Screenshots)
-
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-
-This implementation successfully:
-
-- Defines and places a custom section in Flash.  
-- Relocates it to RAM during startup using linker symbols.  
-- Verifies relocation via debugger and variable inspection.  
-
-**Result:** `.cosmic_constellation` section correctly relocates from Flash → RAM  
-and is accessible during program execution.
-
----
-
-🧠 *Developed & Verified by:*  
-**Tejas B G**  
-Electronics & Communication Engineering – DSATM  
-Cohort 3 | Infineon Embedded Systems Design Course
-## 🧰 Visual Proof (Screenshots)
-
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-
-This implementation successfully:
-
-- Defines and places a custom section in Flash.  
-- Relocates it to RAM during startup using linker symbols.  
-- Verifies relocation via debugger and variable inspection.  
-
-**Result:** `.cosmic_constellation` section correctly relocates from Flash → RAM  
-and is accessible during program execution.
-
----
-
-🧠 *Developed & Verified by:*  
-**Tejas B G**  
-Electronics & Communication Engineering – DSATM  
-Cohort 3 | Infineon Embedded Systems Design Course
-## 🧰 Visual Proof (Screenshots)
-
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-
-This implementation successfully:
-
-- Defines and places a custom section in Flash.  
-- Relocates it to RAM during startup using linker symbols.  
-- Verifies relocation via debugger and variable inspection.  
-
-**Result:** `.cosmic_constellation` section correctly relocates from Flash → RAM  
-and is accessible during program execution.
-
----
-
-🧠 *Developed & Verified by:*  
-**Tejas B G**  
-Electronics & Communication Engineering – DSATM  
-Cohort 3 | Infineon Embedded Systems Design Course
-## 🧰 Visual Proof (Screenshots)
-
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-
-This implementation successfully:
-
-- Defines and places a custom section in Flash.  
-- Relocates it to RAM during startup using linker symbols.  
-- Verifies relocation via debugger and variable inspection.  
-
-**Result:** `.cosmic_constellation` section correctly relocates from Flash → RAM  
-and is accessible during program execution.
-
----
-
-🧠 *Developed & Verified by:*  
-**Tejas B G**  
-Electronics & Communication Engineering – DSATM  
-Cohort 3 | Infineon Embedded Systems Design Course
-## 🧰 Visual Proof (Screenshots)
-
-<div align="center">
-  <img src="./Images/flash_memory.png" alt="Flash content at 0x00003000" width="600" />
-  <p><b>Flash Memory (Before Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/ram_memory.png" alt="RAM content after relocation" width="600" />
-  <p><b>RAM Memory (After Relocation)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/map_highlight.png" alt="Map file showing LMA and VMA" width="600" />
-  <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
-</div>
-<br>
-
-<div align="center">
-  <img src="./Images/debug_watch.png" alt="Watch window showing relocated variable values" width="600" />
-  <p><b>Watch Window – verify_custom & custom_array Values</b></p>
-</div>
-<br>
-
----
-
-## ⚠️ Implementation Notes & Caveats
-
-- `ALIGN(4)` ensures 32-bit alignment for proper access.  
-- `KEEP()` directive prevents linker from optimizing away `.cosmic_constellation`.  
-- Custom Flash region `TEJAS` begins at `0x00003000`.  
-- Verified in debugger: Flash-to-RAM copy successful and accessible in runtime.  
-- No overlap or conflict between memory regions.  
-- `volatile` ensures live variable visibility during debugging.  
-
----
-
-## ✅ Summary
-
-This implementation successfully:
-
-- Defines and places a custom section in Flash.  
-- Relocates it to RAM during startup using linker symbols.  
-- Verifies relocation via debugger and variable inspection.  
-
-**Result:** `.cosmic_constellation` section correctly relocates from Flash → RAM  
-and is accessible during program execution.
-
----
-
-🧠 *Developed & Verified by:*  
-**Tejas B G**  
-Electronics & Communication Engineering – DSATM  
-Cohort 3 | Infineon Embedded Systems Design Course
 ## 🧰 Visual Proof (Screenshots)
 
 <div align="center">
@@ -570,10 +197,12 @@ This implementation successfully:
 
 ## 🙏 Acknowledgments
 
-**Infineon Technologies**  
-**Balajee Seshadri Sir**  
-**Ananth Kamath Sir**  
-**Prakash Balasubramanian Sir**  
-**Boya Vinay Kumar Sir**
+**Embedded Systems Design – Cohort 3 Organizers & Mentors**
+
+- **Infineon Technologies**  
+- **Balajee Seshadri Sir**  
+- **Ananth Kamath Sir**  
+- **Prakash Balasubramanian Sir**  
+- **Boya Vinay Kumar Sir**
 
 
