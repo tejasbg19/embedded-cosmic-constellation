@@ -149,25 +149,25 @@ confirming successful relocation of `.cosmic_constellation` from Flash (LMA) to 
 ## 🧰 Visual Proof (Screenshots)
 
 <div align="center">
-  <img src="./Images/ARRAY_at_FLASH_MEMORY_WINDOW.png" alt="Flash content at 0x00003000" width="600" />
+  <img src="./Images/ARRAY_at_FLASH_MEMORY_WINDOW.png" alt="Flash content at 0x00003000" width="1000" />
   <p><b>Flash Memory (Before Relocation)</b></p>
 </div>
 <br>
 
 <div align="center">
-  <img src="./Images/ARRAY_AT_RAM_MEMORY_WINDOW.png" alt="RAM content after relocation" width="600" />
+  <img src="./Images/ARRAY_AT_RAM_MEMORY_WINDOW.png" alt="RAM content after relocation" width="1000" />
   <p><b>RAM Memory (After Relocation)</b></p>
 </div>
 <br>
 
 <div align="center">
-  <img src="./Images/CUSTOM_SECTION_LMA_VMA_IN_MAP_FILE.png" alt="Map file showing LMA and VMA" width="600" />
+  <img src="./Images/CUSTOM_SECTION_LMA_VMA_IN_MAP_FILE.png" alt="Map file showing LMA and VMA" width="1000" />
   <p><b>Map File Highlight (LMA/VMA Proof)</b></p>
 </div>
 <br>
 
 <div align="center">
-  <img src="./Images/ARRAY_ELEMENTS_ACCESSED_IN_MAIN.png" alt="Watch window showing relocated variable values" width="600" />
+  <img src="./Images/ARRAY_ELEMENTS_ACCESSED_IN_MAIN.png" alt="Watch window showing relocated variable values" width="1000" />
   <p><b>Watch Window – verify_custom & custom_array Values</b></p>
 </div>
 <br>
@@ -204,5 +204,6 @@ This implementation successfully:
 - **Ananth Kamath Sir**  
 - **Prakash Balasubramanian Sir**  
 - **Boya Vinay Kumar Sir**
+
 
 
