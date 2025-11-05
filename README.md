@@ -568,3 +568,12 @@ This implementation successfully:
 
 ---
 
+## 🙏 Acknowledgments
+
+**Infineon Technologies**  
+**Balajee Seshadri Sir**  
+**Ananth Kamath Sir**  
+**Prakash Balasubramanian Sir**  
+**Boya Vinay Kumar Sir**
+
+
